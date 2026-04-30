@@ -3,144 +3,182 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>KOREA 2026</title>
+    <title>KOREA 2026 | Funliday Style</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Sippori+Mincho:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Sippori Mincho', serif; background-color: #fcfaf8; color: #333; }
+        body { font-family: 'Sippori Mincho', serif; background-color: #f6f7f9; color: #333; }
         .hide-scrollbar::-webkit-scrollbar { display: none; }
-        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         
-        /* 日期點選效果 */
+        /* 頂部日期 Active 樣式 */
         .date-item.active { color: #1e293b; position: relative; }
         .date-item.active::after {
-            content: ''; position: absolute; bottom: -8px; left: 50%; transform: translateX(-50%);
-            width: 4px; height: 4px; background-color: #9c1c1c; border-radius: 50%;
+            content: ''; position: absolute; bottom: -4px; left: 50%; transform: translateX(-50%);
+            width: 4px; height: 4px; background-color: #d1a15e; border-radius: 50%;
         }
-        
-        /* 內容切換動畫 */
-        .day-content { display: none; }
-        .day-content.active { display: block; animation: fadeIn 0.5s ease forwards; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* 時間線點點裝飾 */
-        .time-mark::after {
-            content: '°'; position: absolute; top: -2px; right: -8px; font-size: 10px; color: #ccc;
+        /* Funliday 卡片連接線 */
+        .timeline-container { position: relative; padding-left: 20px; }
+        .timeline-line { 
+            position: absolute; left: 7px; top: 25px; bottom: -15px; 
+            width: 1.5px; background: #e2e8f0; z-index: 1; 
         }
+        .timeline-dot { 
+            position: absolute; left: 0; top: 8px; 
+            width: 15px; height: 15px; border-radius: 50%; 
+            background: #fff; border: 3px solid #d1a15e; z-index: 10; 
+        }
+
+        /* 內容切換 */
+        .day-content { display: none; }
+        .day-content.active { display: block; animation: fadeIn 0.4s ease forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* 特色天氣 Icon 模擬 */
+        .weather-icon { width: 32px; height: 32px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)); }
     </style>
 </head>
-<body class="pb-24">
+<body class="pb-28">
 
-    <header class="bg-white pt-8 pb-4 sticky top-0 z-30 shadow-sm">
-        <div class="text-center mb-6">
-            <p class="text-[10px] text-gray-400 tracking-[0.2em] uppercase">Family Trip</p>
-            <h1 class="text-2xl mt-1">韓國旅行 <span class="text-gray-200">2026</span></h1>
+    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-gray-100">
+        <div class="px-6 py-4 flex justify-between items-center">
+            <div>
+                <p class="text-[10px] text-gray-400 tracking-widest uppercase">Family Trip</p>
+                <h1 class="text-xl font-bold">韓國旅行 <span class="text-gray-300 font-light italic">2026</span></h1>
+            </div>
+            <div class="text-right">
+                <p class="text-[10px] text-gray-400">MAY</p>
+                <p class="text-lg font-bold text-slate-800">SEOUL</p>
+            </div>
         </div>
         
-        <nav class="flex overflow-x-auto hide-scrollbar px-6 space-x-10 text-sm">
+        <nav class="flex overflow-x-auto hide-scrollbar px-6 space-x-8 text-sm pb-3">
             <div onclick="showDay(1, this)" class="date-item active flex-none text-center cursor-pointer">
-                <p class="text-[10px] text-gray-400 uppercase">Fri</p><p class="font-bold text-lg leading-none mt-1">22</p>
+                <p class="text-[9px] text-gray-400 uppercase">Fri</p><p class="font-bold text-lg leading-tight">22</p>
             </div>
             <div onclick="showDay(2, this)" class="date-item flex-none text-center text-gray-300 cursor-pointer">
-                <p class="text-[10px] uppercase">Sat</p><p class="font-bold text-lg leading-none mt-1">23</p>
+                <p class="text-[9px] uppercase">Sat</p><p class="font-bold text-lg leading-tight">23</p>
             </div>
             <div onclick="showDay(3, this)" class="date-item flex-none text-center text-gray-300 cursor-pointer">
-                <p class="text-[10px] uppercase">Sun</p><p class="font-bold text-lg leading-none mt-1">24</p>
+                <p class="text-[9px] uppercase">Sun</p><p class="font-bold text-lg leading-tight">24</p>
             </div>
             <div onclick="showDay(4, this)" class="date-item flex-none text-center text-gray-300 cursor-pointer">
-                <p class="text-[10px] uppercase">Mon</p><p class="font-bold text-lg leading-none mt-1">25</p>
+                <p class="text-[9px] uppercase">Mon</p><p class="font-bold text-lg leading-tight">25</p>
             </div>
             <div onclick="showDay(5, this)" class="date-item flex-none text-center text-gray-300 cursor-pointer">
-                <p class="text-[10px] uppercase">Tue</p><p class="font-bold text-lg leading-none mt-1">26</p>
+                <p class="text-[9px] uppercase">Tue</p><p class="font-bold text-lg leading-tight">26</p>
             </div>
             <div onclick="showDay(6, this)" class="date-item flex-none text-center text-gray-300 cursor-pointer">
-                <p class="text-[10px] uppercase">Wed</p><p class="font-bold text-lg leading-none mt-1">27</p>
+                <p class="text-[9px] uppercase">Wed</p><p class="font-bold text-lg leading-tight">27</p>
             </div>
         </nav>
     </header>
 
-    <main id="day-container">
+    <main id="day-container" class="px-5">
 
-        <div id="day1" class="day-content active">
-            <div class="px-6 mt-6">
-                <div class="relative h-56 rounded-xl overflow-hidden shadow-lg">
-                    <img src="https://images.unsplash.com/photo-1540962351504-03099e0a75c3?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover" alt="Seoul Hanok">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                    <div class="absolute bottom-4 left-4 text-white">
-                        <p class="text-[10px] opacity-70 italic">DAY 1 - 首爾特別市</p>
-                        <h2 class="text-xl font-bold">啟程：漫步北村韓屋</h2>
-                    </div>
+        <div id="day1" class="day-content active pt-6">
+            <div class="relative h-64 rounded-2xl overflow-hidden shadow-2xl mb-8">
+                <img src="https://images.unsplash.com/photo-1540962351504-03099e0a75c3?q=80&w=1000" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                <div class="absolute bottom-6 left-6 text-white">
+                    <p class="text-[10px] tracking-widest opacity-80 mb-1">第一天 · 5月22日</p>
+                    <h2 class="text-2xl font-bold">啟程：漫步北村韓屋</h2>
                 </div>
             </div>
 
-            <div class="px-6 mt-6">
-                <div class="bg-white p-4 rounded-xl flex items-center justify-between border border-gray-100">
-                    <div>
-                        <p class="text-lg font-bold">首爾市</p>
-                        <p class="text-[10px] text-gray-400">未來 24 小時預報</p>
+            <section class="bg-white rounded-2xl p-5 mb-8 shadow-sm border border-gray-100/50">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="font-bold text-sm">首爾市 即時預報</h3>
+                    <span class="text-[10px] text-gray-400 uppercase tracking-tighter">Open-Meteo</span>
+                </div>
+                <div class="flex overflow-x-auto hide-scrollbar space-x-6 pb-2">
+                    <div class="text-center shrink-0">
+                        <p class="text-[10px] text-gray-400 mb-2">12:00</p>
+                        <img src="https://cdn-icons-png.flaticon.com/512/4814/4814268.png" class="weather-icon mx-auto mb-2">
+                        <p class="text-xs font-bold">22°</p>
                     </div>
-                    <div class="flex space-x-4">
-                        <div class="text-center"><span class="block text-lg">☀️</span><span class="text-[10px] text-gray-500">22°</span></div>
-                        <div class="text-center"><span class="block text-lg">☀️</span><span class="text-[10px] text-gray-500">20°</span></div>
-                        <div class="text-center"><span class="block text-lg">☁️</span><span class="text-[10px] text-gray-500">18°</span></div>
+                    <div class="text-center shrink-0">
+                        <p class="text-[10px] text-gray-400 mb-2">15:00</p>
+                        <img src="https://cdn-icons-png.flaticon.com/512/4814/4814268.png" class="weather-icon mx-auto mb-2">
+                        <p class="text-xs font-bold">20°</p>
+                    </div>
+                    <div class="text-center shrink-0">
+                        <p class="text-[10px] text-gray-400 mb-2">18:00</p>
+                        <img src="https://cdn-icons-png.flaticon.com/512/1163/1163661.png" class="weather-icon mx-auto mb-2">
+                        <p class="text-xs font-bold">18°</p>
+                    </div>
+                    </div>
+            </section>
+
+            <div class="space-y-4">
+                <div class="timeline-container">
+                    <div class="timeline-line"></div>
+                    <div class="timeline-dot"></div>
+                    <div class="bg-white rounded-xl p-4 shadow-sm border border-gray-50 flex gap-4">
+                        <div class="w-16 shrink-0 pt-1 text-center border-r border-gray-100">
+                            <p class="text-lg font-bold leading-none">13:45</p>
+                            <p class="text-[9px] text-gray-400 mt-1 uppercase">Flight</p>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-bold text-slate-800">高雄小港機場</h4>
+                            <p class="text-[11px] text-gray-400 mt-1">✈️ 班機 JX846 啟程</p>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="px-8 mt-10 space-y-12 relative before:absolute before:left-[41px] before:top-2 before:bottom-0 before:w-[1px] before:bg-gray-100">
-                
-                <div class="relative flex gap-8">
-                    <div class="w-10 text-right shrink-0">
-                        <span class="time-mark relative text-lg font-bold text-slate-800">13:45</span>
-                    </div>
-                    <div class="pb-2">
-                        <h3 class="text-lg font-bold">啟程 (高雄小港 - 仁川)</h3>
-                        <p class="text-[10px] text-gray-400 tracking-widest mt-1">✈️ FLIGHT</p>
-                        <p class="text-xs text-gray-400 mt-2 leading-relaxed">搭乘航班抵達首爾。仁川機場前往弘大住宿點約需 60 分鐘。</p>
-                    </div>
+                <div class="pl-12 py-1 flex items-center gap-2">
+                    <div class="h-[1px] w-4 bg-gray-200"></div>
+                    <span class="text-[10px] text-gray-400 italic">搭乘飛機 · 約 3h 55m</span>
                 </div>
 
-                <div class="relative flex gap-8">
-                    <div class="w-10 text-right shrink-0">
-                        <span class="time-mark relative text-lg font-bold text-slate-800">20:00</span>
-                    </div>
-                    <div class="pb-2">
-                        <h3 class="text-lg font-bold">晚餐：大瓦房醬蟹</h3>
-                        <p class="text-[10px] text-gray-400 tracking-widest mt-1">🍴 FOOD</p>
-                        <p class="text-xs text-gray-400 mt-2 leading-relaxed">【必吃清單】享受米其林推薦的道地醬油螃蟹，為旅程揭開序幕。</p>
+                <div class="timeline-container">
+                    <div class="timeline-line"></div>
+                    <div class="timeline-dot"></div>
+                    <div class="bg-white rounded-xl p-4 shadow-sm border border-gray-50 flex gap-4">
+                        <div class="w-16 shrink-0 pt-1 text-center border-r border-gray-100">
+                            <p class="text-lg font-bold leading-none">20:00</p>
+                            <p class="text-[9px] text-gray-400 mt-1 uppercase">Dinner</p>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-bold text-[#9c1c1c]">大瓦房醬蟹</h4>
+                            <p class="text-[11px] text-gray-400 mt-1">首爾必吃米其林，晚餐首選</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div id="day2" class="day-content">
-             <div class="px-6 mt-6">
-                <div class="relative h-56 rounded-xl overflow-hidden shadow-lg bg-slate-200 flex items-center justify-center italic text-gray-400">Day 2 內容編輯中...</div>
-             </div>
-        </div>
-        <div id="day3" class="day-content text-center py-20 text-gray-300 italic">Day 3 待編輯</div>
+        <div id="day2" class="day-content pt-6 text-center text-gray-300 italic py-20">請複製 Day 1 格式填入 Day 2 行程...</div>
 
     </main>
 
-    <div class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] bg-white/90 backdrop-blur-md h-16 rounded-2xl shadow-2xl border border-gray-100 flex items-center justify-around px-6">
-        <div class="text-center opacity-30"><span class="block text-xl">📍</span><p class="text-[8px]">GPS</p></div>
-        <div class="text-center"><span class="block text-xl">🏠</span><p class="text-[8px]">HOME</p></div>
-        <div class="text-center opacity-30"><span class="block text-xl">📷</span><p class="text-[8px]">PHOTO</p></div>
+    <div class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[92%] bg-white/90 backdrop-blur-lg h-16 rounded-2xl shadow-2xl border border-gray-100 flex items-center justify-around px-4 z-50">
+        <div class="flex flex-col items-center text-slate-800">
+            <img src="https://cdn-icons-png.flaticon.com/512/854/854878.png" class="w-6 h-6 opacity-80">
+            <p class="text-[9px] mt-1 font-bold">行程</p>
+        </div>
+        <div class="flex flex-col items-center text-gray-300">
+            <img src="https://cdn-icons-png.flaticon.com/512/1865/1865269.png" class="w-6 h-6 grayscale opacity-30">
+            <p class="text-[9px] mt-1">地圖</p>
+        </div>
+        <div class="flex flex-col items-center text-gray-300">
+            <img src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png" class="w-6 h-6 grayscale opacity-30">
+            <p class="text-[9px] mt-1">景點</p>
+        </div>
     </div>
 
     <script>
         function showDay(dayNum, element) {
             document.querySelectorAll('.day-content').forEach(day => day.classList.remove('active'));
             document.getElementById('day' + dayNum).classList.add('active');
-            
             document.querySelectorAll('.date-item').forEach(item => {
                 item.classList.remove('active');
                 item.classList.add('text-gray-300');
             });
             element.classList.add('active');
             element.classList.remove('text-gray-300');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
-
 </body>
 </html>
