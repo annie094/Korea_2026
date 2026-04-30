@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>韓國行程 App</title>
+    <style>
+        /* 基礎樣式：模擬 Ciao Kitchen 的優雅簡約感 */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #fcfaf8; /* 米白色底 */
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* 頂部標題區 */
+        .header {
+            text-align: center;
+            padding: 40px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .trip-name {
+            font-size: 24px;
+            letter-spacing: 2px;
+            font-weight: 300;
+        }
+
+        /* 時間軸樣式 */
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        /* 垂直軸線 */
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: #ddd;
+        }
+
+        /* 行程項目 */
+        .item {
+            position: relative;
+            padding-left: 50px;
+            margin-bottom: 30px;
+        }
+
+        /* 時間點圓圈 */
+        .dot {
+            position: absolute;
+            left: 17px;
+            top: 5px;
+            width: 7px;
+            height: 7px;
+            background: #333;
+            border-radius: 50%;
+        }
+
+        .time {
+            font-size: 14px;
+            font-weight: bold;
+            color: #888;
+            margin-bottom: 5px;
+        }
+
+        .card {
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .type {
+            font-size: 10px;
+            color: #a68b6d;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .location {
+            font-size: 18px;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <div class="trip-name">KOREA TRIP 2026</div>
+    </div>
+
+    <div class="timeline">
+        <!-- 第一個行程 -->
+        <div class="item">
+            <div class="dot"></div>
+            <div class="time">09:00</div>
+            <div class="card">
+                <div class="type">Flight</div>
+                <div class="location">桃園國際機場 (TPE)</div>
+            </div>
+        </div>
+
+        <!-- 第二個行程：你可以修改這裡的內容 -->
+        <div class="item">
+            <div class="dot"></div>
+            <div class="time">14:00</div>
+            <div class="card">
+                <div class="type">Special</div>
+                <div class="location">國技院 (Kukkiwon)</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
