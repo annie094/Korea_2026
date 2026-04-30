@@ -92,25 +92,33 @@ function getQWeatherIconUrl(wmoCode) {
         <div class="trip-title">KOREA 2026</div>
     </div>
 
-    <!-- 天氣顯示區 -->
-    <div class="weather-row">
-        <div class="weather-item">
-            <div class="weather-time">13:00</div>
-            <i data-lucide="sun" class="weather-icon"></i>
-            <div class="temp">22°</div>
-        </div>
-        <div class="weather-item">
-            <div class="weather-time">14:00</div>
-            <i data-lucide="cloud-sun" class="weather-icon"></i>
-            <div class="temp">21°</div>
-        </div>
-        <div class="weather-item">
-            <div class="weather-time">15:00</div>
-            <i data-lucide="cloud" class="weather-icon"></i>
-            <div class="temp">20°</div>
-        </div>
-    </div>
+   /* 基礎圖示樣式 */
+.ios-weather-icon {
+  width: 32px;
+  height: 32px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: inline-block;
+  margin: 5px 0;
+}
 
+/* 根據不同天氣狀態載入你上傳到 GitHub 的圖片 */
+.ios-weather-icon.sunny {
+  background-image: url('./assets/icons/ios-sunny.png');
+}
+
+.ios-weather-icon.cloudy {
+  background-image: url('./assets/icons/ios-cloudy.png');
+}
+
+.ios-weather-icon.rainy {
+  background-image: url('./assets/icons/ios-rainy.png');
+}
+
+/* 如果原本有舊圖示（例如 FontAwesome），強制隱藏它的內容 */
+.ios-weather-icon::before {
+  display: none !important;
+}
     <!-- 行程列表區 -->
     <div class="timeline">
         <div class="event">
