@@ -7,129 +7,122 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Sippori+Mincho:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body { 
-            font-family: 'Sippori Mincho', serif; 
-            background-color: #fcfaf8; /* 淡淡的米白色，更有質感 */
-        }
+        body { font-family: 'Sippori Mincho', serif; background-color: #fcfaf8; }
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         .emergency-red { color: #9c1c1c; }
-        .bg-emergency-red { background-color: #9c1c1c; }
+        
+        /* 日期點選樣式 */
+        .date-item.active { color: #1e293b; position: relative; }
+        .date-item.active::after {
+            content: ''; position: absolute; bottom: -8px; left: 50%; transform: translateX(-50%);
+            width: 4px; h: 4px; background-color: #9c1c1c; border-radius: 50%;
+        }
+        .day-content { display: none; }
+        .day-content.active { display: block; animation: fadeIn 0.4s ease; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
-<body class="pb-20 text-slate-800">
+<body class="pb-24 text-slate-800">
 
     <header class="p-8 text-center bg-white">
-        <p class="text-[10px] text-gray-400 tracking-[0.2em] font-light">FAMILY TRIP</p>
+        <p class="text-[10px] text-gray-400 tracking-[0.2em] font-light uppercase">Family Trip</p>
         <h1 class="text-2xl mt-1">韓國旅行 <span class="text-gray-300 ml-1">2026</span></h1>
     </header>
 
-    <nav class="sticky top-0 z-20 bg-white border-y border-gray-100 flex overflow-x-auto hide-scrollbar px-4 py-3 space-x-8 text-sm">
-        <div class="flex-none text-center"><p class="text-[10px] text-gray-400">FRI</p><p class="font-bold">22</p></div>
-        <div class="flex-none text-center text-gray-300"><p class="text-[10px]">SAT</p><p>23</p></div>
-        <div class="flex-none text-center text-gray-300"><p class="text-[10px]">SUN</p><p>24</p></div>
-        <div class="flex-none text-center text-gray-300"><p class="text-[10px]">MON</p><p>25</p></div>
-        <div class="flex-none text-center text-gray-300"><p class="text-[10px]">TUE</p><p>26</p></div>
-        <div class="flex-none text-center text-gray-300"><p class="text-[10px]">WED</p><p>27</p></div>
+    <nav class="sticky top-0 z-20 bg-white border-y border-gray-100 flex overflow-x-auto hide-scrollbar px-6 py-4 space-x-10 text-sm">
+        <div onclick="showDay(1, this)" class="date-item active flex-none text-center cursor-pointer">
+            <p class="text-[10px] text-gray-400 uppercase">Fri</p><p class="font-bold text-lg">22</p>
+        </div>
+        <div onclick="showDay(2, this)" class="date-item flex-none text-center text-gray-300 cursor-pointer">
+            <p class="text-[10px] uppercase">Sat</p><p class="font-bold text-lg">23</p>
+        </div>
+        <div onclick="showDay(3, this)" class="date-item flex-none text-center text-gray-300 cursor-pointer">
+            <p class="text-[10px] uppercase">Sun</p><p class="font-bold text-lg">24</p>
+        </div>
+        <div onclick="showDay(4, this)" class="date-item flex-none text-center text-gray-300 cursor-pointer">
+            <p class="text-[10px] uppercase">Mon</p><p class="font-bold text-lg">25</p>
+        </div>
+        <div onclick="showDay(5, this)" class="date-item flex-none text-center text-gray-300 cursor-pointer">
+            <p class="text-[10px] uppercase">Tue</p><p class="font-bold text-lg">26</p>
+        </div>
+        <div onclick="showDay(6, this)" class="date-item flex-none text-center text-gray-300 cursor-pointer">
+            <p class="text-[10px] uppercase">Wed</p><p class="font-bold text-lg">27</p>
+        </div>
     </nav>
 
-    <main class="p-6 space-y-10">
-
-        <section class="border border-gray-200 rounded-sm bg-white overflow-hidden">
-            <div class="grid grid-cols-2 border-b border-gray-200">
-                <div class="p-6 text-center border-r border-gray-200">
-                    <p class="text-[10px] text-gray-400 mb-1">警察 (POLICE)</p>
-                    <p class="text-4xl font-bold emergency-red">112</p>
-                </div>
-                <div class="p-6 text-center">
-                    <p class="text-[10px] text-gray-400 mb-1">救護 / 火警</p>
-                    <p class="text-4xl font-bold emergency-red">119</p>
-                </div>
+    <main class="p-6">
+        <section class="mb-10 border border-gray-100 rounded bg-white p-5">
+            <div class="flex justify-between items-center mb-4">
+                <div><p class="text-[10px] text-gray-400">POLICE</p><p class="text-2xl font-bold emergency-red">112</p></div>
+                <div class="text-right"><p class="text-[10px] text-gray-400">AMBULANCE</p><p class="text-2xl font-bold emergency-red">119</p></div>
             </div>
-            <div class="p-5 relative">
-                <p class="text-sm font-bold">訪韓外國人醫療熱線</p>
-                <p class="text-2xl font-bold mt-1 text-slate-700">1339</p>
-                <p class="text-[10px] text-gray-400 mt-2">24小時對應 (英/中/日/俄)</p>
-                <div class="absolute right-5 top-1/2 -translate-y-1/2 w-10 h-10 border border-slate-800 rounded-full flex items-center justify-center">
-                    <span class="text-xs">📞</span>
-                </div>
-            </div>
+            <p class="text-xs text-slate-500">醫療熱線: 1339 <span class="text-gray-300 ml-2">| 24H 中文應對</span></p>
         </section>
 
-        <section class="space-y-12 relative before:absolute before:left-2 before:top-2 before:bottom-0 before:w-px before:bg-gray-200">
+        <div id="day-container">
             
-            <div class="relative pl-8">
-                <div class="absolute left-0 top-1.5 w-4 h-4 bg-white border border-slate-800 rounded-full flex items-center justify-center">
-                    <div class="w-1.5 h-1.5 bg-slate-800 rounded-full"></div>
-                </div>
-                <h3 class="font-bold text-lg">5/22 FRI <span class="text-xs text-gray-400 ml-2 italic">Day 1</span></h3>
-                <div class="mt-4 space-y-4 text-sm leading-relaxed text-slate-600">
-                    <div class="border-b border-gray-50 pb-2">
-                        <span class="text-[10px] bg-slate-100 px-1.5 py-0.5 rounded mr-2">FLIGHT</span>
-                        13:45 小港 ➔ 17:40 仁川
+            <div id="day1" class="day-content active space-y-6">
+                <h2 class="text-xl font-bold border-b border-gray-100 pb-2">5/22 Friday</h2>
+                <div class="space-y-6 pt-2">
+                    <div class="flex gap-4">
+                        <span class="text-gray-300 text-xs mt-1 italic">13:45</span>
+                        <div><p class="font-bold">高雄小港出發</p><p class="text-xs text-gray-400">✈️ 航班 ➔ 17:40 抵達仁川</p></div>
                     </div>
-                    <p>🏨 前往弘大住宿點</p>
-                    <p class="emergency-red">🍴 晚餐：大瓦房醬蟹</p>
+                    <div class="flex gap-4">
+                        <span class="text-gray-300 text-xs mt-1 italic">19:30</span>
+                        <div><p class="font-bold">弘大住宿點</p><p class="text-xs text-gray-400">Check-in 並放置行李</p></div>
+                    </div>
+                    <div class="flex gap-4">
+                        <span class="text-gray-300 text-xs mt-1 italic">20:30</span>
+                        <div><p class="font-bold emergency-red">大瓦房醬蟹</p><p class="text-xs text-gray-400">🍴 第一晚的高級晚餐</p></div>
+                    </div>
                 </div>
             </div>
 
-            <div class="relative pl-8">
-                <div class="absolute left-0 top-1.5 w-4 h-4 bg-white border border-gray-300 rounded-full"></div>
-                <h3 class="font-bold text-lg">5/23 SAT <span class="text-xs text-gray-400 ml-2 italic">Day 2</span></h3>
-                <div class="mt-4 space-y-4 text-sm leading-relaxed text-slate-600">
-                    <p>🏯 09:00 景福宮 (韓服+攝影: 旋律、ari)</p>
-                    <p class="emergency-red">🍴 午餐：馬鈴薯排骨湯</p>
-                    <p>🎨 14:00 弘大 & 望遠文創小店 (Object, Subaco, 望遠站)</p>
-                    <p>🐈 有貓的相框店 / 🛍️ Musinsa, SPAO</p>
-                    <p class="emergency-red">🍴 晚餐：白玉豬肉湯飯 (明洞龍鬚糖)</p>
+            <div id="day2" class="day-content space-y-6">
+                <h2 class="text-xl font-bold border-b border-gray-100 pb-2">5/23 Saturday</h2>
+                <div class="space-y-6 pt-2">
+                    <div class="flex gap-4"><span class="text-gray-300 text-xs mt-1 italic">09:00</span><div><p class="font-bold">景福宮 韓服體驗</p><p class="text-xs text-gray-400">攝影預約: 旋律、ari</p></div></div>
+                    <div class="flex gap-4"><span class="text-gray-300 text-xs mt-1 italic">12:00</span><div><p class="font-bold emergency-red">馬鈴薯排骨湯</p><p class="text-xs text-gray-400">옛골감자탕 午餐時間</p></div></div>
+                    <div class="flex gap-4"><span class="text-gray-300 text-xs mt-1 italic">14:00</span><div><p class="font-bold">弘大 & 望遠文創</p><p class="text-xs text-gray-400">Object / Subaco / 望遠站文創巡禮</p></div></div>
+                    <div class="flex gap-4"><span class="text-gray-300 text-xs mt-1 italic">18:00</span><div><p class="font-bold emergency-red">白玉豬肉湯飯</p><p class="text-xs text-gray-400">明洞區巡禮 + 龍鬚糖小哥哥</p></div></div>
                 </div>
             </div>
 
-            <div class="relative pl-8">
-                <div class="absolute left-0 top-1.5 w-4 h-4 bg-white border border-gray-300 rounded-full"></div>
-                <h3 class="font-bold text-lg">5/24 SUN <span class="text-xs text-gray-400 ml-2 italic">Day 3</span></h3>
-                <div class="mt-4 space-y-4 text-sm leading-relaxed text-slate-600">
-                    <p>🐾 10:30 Zoolung Zoolung 室內動物園</p>
-                    <p class="emergency-red">🍴 午餐：烤肉 (待定)</p>
-                    <p>🐎 14:00 首爾賽馬公園</p>
-                    <p>🛍️ 晚上：大創、OV / 🍴 風川鰻魚</p>
+            <div id="day3" class="day-content space-y-6">
+                <h2 class="text-xl font-bold border-b border-gray-100 pb-2">5/24 Sunday</h2>
+                <div class="space-y-6 pt-2">
+                    <div class="flex gap-4"><span class="text-gray-300 text-xs mt-1 italic">10:30</span><div><p class="font-bold">Zoolung Zoolung</p><p class="text-xs text-gray-400">時代廣場 5F 室內動物園</p></div></div>
+                    <div class="flex gap-4"><span class="text-gray-300 text-xs mt-1 italic">14:00</span><div><p class="font-bold">首爾賽馬公園</p><p class="text-xs text-gray-400">體驗當地賽馬文化</p></div></div>
+                    <div class="flex gap-4"><span class="text-gray-300 text-xs mt-1 italic">19:00</span><div><p class="font-bold emergency-red">風川鰻魚</p><p class="text-xs text-gray-400">晚餐補充體力</p></div></div>
                 </div>
             </div>
 
-            <div class="relative pl-8">
-                <div class="absolute left-0 top-1.5 w-4 h-4 bg-white border border-gray-300 rounded-full"></div>
-                <h3 class="font-bold text-lg">5/25 MON <span class="text-xs text-gray-400 ml-2 italic">Day 4</span></h3>
-                <div class="mt-4 space-y-4 text-sm leading-relaxed text-slate-600">
-                    <p>🎓 10:00 延世大學</p>
-                    <p>☕ 14:00 聖水洞</p>
-                    <p>🏫 17:00 梨花女大</p>
-                </div>
-            </div>
+            <div id="day4" class="day-content space-y-6"><h2 class="text-xl font-bold">5/25 Monday</h2><p class="text-sm">延世大學 / 聖水洞 / 梨花女大</p></div>
+            <div id="day5" class="day-content space-y-6"><h2 class="text-xl font-bold">5/26 Tuesday</h2><p class="text-sm">狎鷗亭 & 清潭洞 / 國技院</p></div>
+            <div id="day6" class="day-content space-y-6"><h2 class="text-xl font-bold">5/27 Wednesday</h2><p class="text-sm">13:05 仁川機場啟程返台</p></div>
 
-            <div class="relative pl-8">
-                <div class="absolute left-0 top-1.5 w-4 h-4 bg-white border border-gray-300 rounded-full"></div>
-                <h3 class="font-bold text-lg">5/26 TUE <span class="text-xs text-gray-400 ml-2 italic">Day 5</span></h3>
-                <div class="mt-4 space-y-4 text-sm leading-relaxed text-slate-600">
-                    <p>🛍️ 狎鷗亭 & 清潭洞</p>
-                    <p>🥋 國技院 (Kukkiwon)</p>
-                </div>
-            </div>
-
-            <div class="relative pl-8">
-                <div class="absolute left-0 top-1.5 w-4 h-4 bg-white border border-gray-300 rounded-full"></div>
-                <h3 class="font-bold text-lg">5/27 WED <span class="text-xs text-gray-400 ml-2 italic">Day 6</span></h3>
-                <div class="mt-4 text-sm text-slate-600">
-                    <p>✈️ 13:05 仁川 ➔ 15:10 小港</p>
-                </div>
-            </div>
-        </section>
+        </div>
     </main>
 
-    <footer class="fixed bottom-0 w-full bg-white border-t border-gray-100 p-4 flex justify-around text-[10px] tracking-widest text-gray-400">
-        <span>TIMELINE</span>
-        <span>MAP</span>
-        <span>INFO</span>
-    </footer>
+    <script>
+        function showDay(dayNum, element) {
+            // 隱藏所有行程
+            document.querySelectorAll('.day-content').forEach(day => day.classList.remove('active'));
+            // 顯示點選的行程
+            document.getElementById('day' + dayNum).classList.add('active');
+            
+            // 處理導覽列顏色
+            document.querySelectorAll('.date-item').forEach(item => {
+                item.classList.remove('active');
+                item.classList.add('text-gray-300');
+            });
+            element.classList.add('active');
+            element.classList.remove('text-gray-300');
+        }
+    </script>
 
 </body>
 </html>
