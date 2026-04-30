@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 <head>
     <meta charset="UTF-8">
     <title>韓國行程 App</title>
@@ -97,6 +99,23 @@
 
 <div class="container">
     <div class="header">
+<div class="weather-row">
+    <div class="weather-item">
+        <div class="weather-time">13:00</div>
+        <i data-lucide="sun" class="weather-icon"></i>
+        <div class="temp">22°</div>
+    </div>
+    <div class="weather-item">
+        <div class="weather-time">14:00</div>
+        <i data-lucide="cloud-sun" class="weather-icon"></i>
+        <div class="temp">21°</div>
+    </div>
+    <div class="weather-item">
+        <div class="weather-time">15:00</div>
+        <i data-lucide="cloud" class="weather-icon"></i>
+        <div class="temp">20°</div>
+    </div>
+</div>
         <div class="trip-name">KOREA TRIP 2026</div>
     </div>
 
