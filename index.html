@@ -2,186 +2,134 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KOREA Travel Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>KOREA 2026</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sippori+Mincho:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Noto Sans TC', sans-serif; background-color: #FCF9F2; color: #4A4A4A; }
-        .hand-drawn-border { border: 2px solid #4A4A4A; border-radius: 255px 15px 225px 15px/15px 225px 15px 255px; }
-        .card { background: white; margin-bottom: 1.5rem; padding: 1.2rem; box-shadow: 5px 5px 0px #D9D2C5; border: 1px solid #4A4A4A; border-radius: 8px; }
-        .tag-eat { background-color: #D39D87; color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; }
-        .tag-buy { background-color: #A6B7AA; color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; }
-        .tag-tips { background-color: #8195A1; color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; }
-        .nav-btn { display: inline-flex; align-items: center; justify-content: center; background: #FAB25E; color: white; padding: 10px; border-radius: 12px; font-size: 0.9rem; font-weight: bold; width: 100%; border: 1px solid #4A4A4A; }
-        .input-field { width: 100%; border: 1px solid #4A4A4A; padding: 8px; border-radius: 8px; margin-top: 5px; background: #FFF; }
+        body { 
+            font-family: 'Sippori Mincho', serif; 
+            background-color: #fcfaf8; /* 淡淡的米白色，更有質感 */
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .emergency-red { color: #9c1c1c; }
+        .bg-emergency-red { background-color: #9c1c1c; }
     </style>
 </head>
-<body class="pb-24">
+<body class="pb-20 text-slate-800">
 
-    <header class="p-6 text-center">
-        <h1 class="text-3xl font-black italic tracking-tighter">KOREA 2026</h1>
-        <p class="text-xs tracking-widest opacity-60">TRAVEL LOG & UTILITIES</p>
+    <header class="p-8 text-center bg-white">
+        <p class="text-[10px] text-gray-400 tracking-[0.2em] font-light">FAMILY TRIP</p>
+        <h1 class="text-2xl mt-1">韓國旅行 <span class="text-gray-300 ml-1">2026</span></h1>
     </header>
 
-    <main class="p-4 max-w-md mx-auto space-y-6">
-        <div class="space-y-8">
-    <h2 class="font-bold text-xl mb-4 flex items-center">
-        <span class="mr-2">📅</span> 6天5夜行程清單
-    </h2>
-    
-    <div class="ml-4 pl-6 border-l-2 border-slate-300 space-y-10 relative">
-        
-        <div class="relative">
-            <div class="absolute -left-[33px] top-1 w-4 h-4 rounded-full bg-slate-600 border-2 border-white"></div>
-            <div class="font-bold text-lg text-slate-800">Day 1: 5/22 (五) 啟程</div>
-            <div class="mt-2 space-y-2 text-sm text-gray-600">
-                <p>✈️ 13:45 - 17:40 高雄小港 ➔ 仁川機場</p>
-                <p>🏨 前往弘大住宿點</p>
-                <p class="tag-eat inline-block px-2 py-0.5 rounded text-xs">晚餐：大瓦房醬蟹</p>
-            </div>
-        </div>
+    <nav class="sticky top-0 z-20 bg-white border-y border-gray-100 flex overflow-x-auto hide-scrollbar px-4 py-3 space-x-8 text-sm">
+        <div class="flex-none text-center"><p class="text-[10px] text-gray-400">FRI</p><p class="font-bold">22</p></div>
+        <div class="flex-none text-center text-gray-300"><p class="text-[10px]">SAT</p><p>23</p></div>
+        <div class="flex-none text-center text-gray-300"><p class="text-[10px]">SUN</p><p>24</p></div>
+        <div class="flex-none text-center text-gray-300"><p class="text-[10px]">MON</p><p>25</p></div>
+        <div class="flex-none text-center text-gray-300"><p class="text-[10px]">TUE</p><p>26</p></div>
+        <div class="flex-none text-center text-gray-300"><p class="text-[10px]">WED</p><p>27</p></div>
+    </nav>
 
-        <div class="relative">
-            <div class="absolute -left-[33px] top-1 w-4 h-4 rounded-full bg-slate-400 border-2 border-white"></div>
-            <div class="font-bold text-lg text-slate-800">Day 2: 5/23 (六) 韓服與文創</div>
-            <div class="mt-2 space-y-2 text-sm text-gray-600">
-                <p>🏯 09:00 景福宮 (韓服租借+攝影：旋律、ari)</p>
-                <p class="tag-eat inline-block px-2 py-0.5 rounded text-xs">午餐：옛골감자탕 馬鈴薯排骨湯</p>
-                <p>🎨 14:00 弘大自由市集、望遠站文創巡禮 (BEOK, Object, Subaco...)</p>
-                <p>🐈 有貓的相框店 / 🛍️ musinsa, ÅLAND, SPAO</p>
-                <p class="tag-eat inline-block px-2 py-0.5 rounded text-xs">晚餐：白玉豬肉湯飯 (明洞龍鬚糖)</p>
-            </div>
-        </div>
+    <main class="p-6 space-y-10">
 
-        <div class="relative">
-            <div class="absolute -left-[33px] top-1 w-4 h-4 rounded-full bg-slate-400 border-2 border-white"></div>
-            <div class="font-bold text-lg text-slate-800">Day 3: 5/24 (日) 動物園與賽馬</div>
-            <div class="mt-2 space-y-2 text-sm text-gray-600">
-                <p>🐾 10:30 Zoolung Zoolung 室內動物園 (時代廣場5F)</p>
-                <p class="tag-eat inline-block px-2 py-0.5 rounded text-xs">午餐：烤肉 (待定)</p>
-                <p>🐎 14:00 首爾賽馬公園</p>
-                <p>🛍️ 晚上：大創、ov</p>
-                <p class="tag-eat inline-block px-2 py-0.5 rounded text-xs">晚餐：風川鰻魚</p>
-            </div>
-        </div>
-
-        <div class="relative">
-            <div class="absolute -left-[33px] top-1 w-4 h-4 rounded-full bg-slate-400 border-2 border-white"></div>
-            <div class="font-bold text-lg text-slate-800">Day 4: 5/25 (一) 校園與聖水</div>
-            <div class="mt-2 space-y-2 text-sm text-gray-600">
-                <p>🎓 10:00 延世大學</p>
-                <p>☕ 14:00 聖水洞巡禮</p>
-                <p>🏫 17:00 梨花女大</p>
-            </div>
-        </div>
-
-        <div class="relative">
-            <div class="absolute -left-[33px] top-1 w-4 h-4 rounded-full bg-slate-400 border-2 border-white"></div>
-            <div class="font-bold text-lg text-slate-800">Day 5: 5/26 (二) 潮流與國技院</div>
-            <div class="mt-2 space-y-2 text-sm text-gray-600">
-                <p>💎 狎鷗亭 & 清潭洞</p>
-                <p>🥋 國技院 (Kukkiwon)</p>
-            </div>
-        </div>
-
-        <div class="relative">
-            <div class="absolute -left-[33px] top-1 w-4 h-4 rounded-full bg-slate-400 border-2 border-white"></div>
-            <div class="font-bold text-lg text-slate-800">Day 6: 5/27 (三) 歸途</div>
-            <div class="mt-2 space-y-2 text-sm text-gray-600">
-                <p>✈️ 13:05 - 15:10 仁川機場 ➔ 高雄小港</p>
-            </div>
-        </div>
-
-    </div>
-</div>
-
-        <!-- 1. 定位代碼與緊急聯絡 -->
-        <div class="card">
-            <h3 class="font-bold text-sm mb-2 text-[#8195A1]">📍 定位代碼 & 緊急聯絡</h3>
-            <div class="grid grid-cols-2 gap-2 text-xs">
-                <div class="p-2 bg-gray-50 rounded border border-dashed border-gray-300">
-                    <p class="opacity-60">飯店地址 (韓)</p>
-                    <p class="font-bold">서울특별시 ...</p>
+        <section class="border border-gray-200 rounded-sm bg-white overflow-hidden">
+            <div class="grid grid-cols-2 border-b border-gray-200">
+                <div class="p-6 text-center border-r border-gray-200">
+                    <p class="text-[10px] text-gray-400 mb-1">警察 (POLICE)</p>
+                    <p class="text-4xl font-bold emergency-red">112</p>
                 </div>
-                <div class="p-2 bg-red-50 rounded border border-dashed border-red-200">
-                    <p class="text-red-500 font-bold">🚑 醫療救急: 119</p>
-                    <p class="text-blue-500 font-bold">📞 旅遊諮詢: 1330</p>
+                <div class="p-6 text-center">
+                    <p class="text-[10px] text-gray-400 mb-1">救護 / 火警</p>
+                    <p class="text-4xl font-bold emergency-red">119</p>
                 </div>
             </div>
-        </div>
-
-        <!-- 2. 金額自動換算 (韓幣 -> 台幣) -->
-        <div class="card hand-drawn-border">
-            <h3 class="font-bold text-sm mb-2 italic">💰 快速記帳換算</h3>
-            <div class="space-y-3">
-                <div>
-                    <label class="text-xs font-bold">輸入韓幣 (KRW)</label>
-                    <input type="number" id="krwInput" class="input-field" placeholder="例如: 10000" oninput="convertCurrency()">
-                </div>
-                <div class="pt-2 border-t border-dashed">
-                    <p class="text-xs opacity-60">預估台幣 (TWD)</p>
-                    <p class="text-2xl font-black text-[#D39D87]">≈ NT$ <span id="twdResult">0</span></p>
+            <div class="p-5 relative">
+                <p class="text-sm font-bold">訪韓外國人醫療熱線</p>
+                <p class="text-2xl font-bold mt-1 text-slate-700">1339</p>
+                <p class="text-[10px] text-gray-400 mt-2">24小時對應 (英/中/日/俄)</p>
+                <div class="absolute right-5 top-1/2 -translate-y-1/2 w-10 h-10 border border-slate-800 rounded-full flex items-center justify-center">
+                    <span class="text-xs">📞</span>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- 3. 直接導航區 (Naver Map) -->
-        <div class="grid grid-cols-2 gap-3">
-            <a href="nmap://search?query=Kukkiwon" class="nav-btn shadow-sm">
-                🥋 國技院導航
-            </a>
-            <a href="nmap://search?query=Myeongdong" class="nav-btn shadow-sm">
-                🛍️ 明洞商圈
-            </a>
-        </div>
-
-        <!-- 4. 行程時間線 -->
-        <div class="mt-4">
-            <h2 class="text-lg font-bold mb-4 flex items-center">📅 行程集中區</h2>
-            <div class="ml-2 pl-6 border-l-2 border-dashed border-[#A6B7AA] space-y-8 relative">
-                <div class="relative">
-                    <div class="absolute -left-[33px] top-1 w-4 h-4 rounded-full bg-[#A6B7AA]"></div>
-                    <span class="tag-tips italic">Day 2</span>
-                    <div class="font-bold mt-1">國技院觀摩</div>
-                    <p class="text-xs opacity-70">14:00 跆拳道表演 (需提前半小時到)</p>
+        <section class="space-y-12 relative before:absolute before:left-2 before:top-2 before:bottom-0 before:w-px before:bg-gray-200">
+            
+            <div class="relative pl-8">
+                <div class="absolute left-0 top-1.5 w-4 h-4 bg-white border border-slate-800 rounded-full flex items-center justify-center">
+                    <div class="w-1.5 h-1.5 bg-slate-800 rounded-full"></div>
                 </div>
-                <div class="relative">
-                    <div class="absolute -left-[33px] top-1 w-4 h-4 rounded-full bg-[#D39D87]"></div>
-                    <span class="tag-tips italic">Day 2</span>
-                    <div class="font-bold mt-1">手作市集</div>
-                    <p class="text-xs opacity-70">尋找守宮周邊、手繪明信片</p>
+                <h3 class="font-bold text-lg">5/22 FRI <span class="text-xs text-gray-400 ml-2 italic">Day 1</span></h3>
+                <div class="mt-4 space-y-4 text-sm leading-relaxed text-slate-600">
+                    <div class="border-b border-gray-50 pb-2">
+                        <span class="text-[10px] bg-slate-100 px-1.5 py-0.5 rounded mr-2">FLIGHT</span>
+                        13:45 小港 ➔ 17:40 仁川
+                    </div>
+                    <p>🏨 前往弘大住宿點</p>
+                    <p class="emergency-red">🍴 晚餐：大瓦房醬蟹</p>
                 </div>
             </div>
-        </div>
 
-        <!-- 5. 紀錄集中區 (可自由輸入備註) -->
-        <div class="card">
-            <h3 class="font-bold text-sm mb-2 italic">📝 隨手筆記</h3>
-            <textarea class="input-field h-24" placeholder="記錄當下心情或待辦事項..."></textarea>
-        </div>
+            <div class="relative pl-8">
+                <div class="absolute left-0 top-1.5 w-4 h-4 bg-white border border-gray-300 rounded-full"></div>
+                <h3 class="font-bold text-lg">5/23 SAT <span class="text-xs text-gray-400 ml-2 italic">Day 2</span></h3>
+                <div class="mt-4 space-y-4 text-sm leading-relaxed text-slate-600">
+                    <p>🏯 09:00 景福宮 (韓服+攝影: 旋律、ari)</p>
+                    <p class="emergency-red">🍴 午餐：馬鈴薯排骨湯</p>
+                    <p>🎨 14:00 弘大 & 望遠文創小店 (Object, Subaco, 望遠站)</p>
+                    <p>🐈 有貓的相框店 / 🛍️ Musinsa, SPAO</p>
+                    <p class="emergency-red">🍴 晚餐：白玉豬肉湯飯 (明洞龍鬚糖)</p>
+                </div>
+            </div>
 
+            <div class="relative pl-8">
+                <div class="absolute left-0 top-1.5 w-4 h-4 bg-white border border-gray-300 rounded-full"></div>
+                <h3 class="font-bold text-lg">5/24 SUN <span class="text-xs text-gray-400 ml-2 italic">Day 3</span></h3>
+                <div class="mt-4 space-y-4 text-sm leading-relaxed text-slate-600">
+                    <p>🐾 10:30 Zoolung Zoolung 室內動物園</p>
+                    <p class="emergency-red">🍴 午餐：烤肉 (待定)</p>
+                    <p>🐎 14:00 首爾賽馬公園</p>
+                    <p>🛍️ 晚上：大創、OV / 🍴 風川鰻魚</p>
+                </div>
+            </div>
+
+            <div class="relative pl-8">
+                <div class="absolute left-0 top-1.5 w-4 h-4 bg-white border border-gray-300 rounded-full"></div>
+                <h3 class="font-bold text-lg">5/25 MON <span class="text-xs text-gray-400 ml-2 italic">Day 4</span></h3>
+                <div class="mt-4 space-y-4 text-sm leading-relaxed text-slate-600">
+                    <p>🎓 10:00 延世大學</p>
+                    <p>☕ 14:00 聖水洞</p>
+                    <p>🏫 17:00 梨花女大</p>
+                </div>
+            </div>
+
+            <div class="relative pl-8">
+                <div class="absolute left-0 top-1.5 w-4 h-4 bg-white border border-gray-300 rounded-full"></div>
+                <h3 class="font-bold text-lg">5/26 TUE <span class="text-xs text-gray-400 ml-2 italic">Day 5</span></h3>
+                <div class="mt-4 space-y-4 text-sm leading-relaxed text-slate-600">
+                    <p>🛍️ 狎鷗亭 & 清潭洞</p>
+                    <p>🥋 國技院 (Kukkiwon)</p>
+                </div>
+            </div>
+
+            <div class="relative pl-8">
+                <div class="absolute left-0 top-1.5 w-4 h-4 bg-white border border-gray-300 rounded-full"></div>
+                <h3 class="font-bold text-lg">5/27 WED <span class="text-xs text-gray-400 ml-2 italic">Day 6</span></h3>
+                <div class="mt-4 text-sm text-slate-600">
+                    <p>✈️ 13:05 仁川 ➔ 15:10 小港</p>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <script>
-        // 匯率換算邏輯 (目前設定 1 TWD ≈ 42 KRW，可視情況調整)
-        function convertCurrency() {
-            const krw = document.getElementById('krwInput').value;
-            const rate = 0.024; // 假設匯率為 0.024 (1000韓幣 = 24台幣)
-            const result = Math.round(krw * rate);
-            document.getElementById('twdResult').innerText = result.toLocaleString();
-        }
+    <footer class="fixed bottom-0 w-full bg-white border-t border-gray-100 p-4 flex justify-around text-[10px] tracking-widest text-gray-400">
+        <span>TIMELINE</span>
+        <span>MAP</span>
+        <span>INFO</span>
+    </footer>
 
-        // 處理 Naver Map 連結 (如果手機沒裝會嘗試開網頁版)
-        document.querySelectorAll('a[href^="nmap://"]').forEach(link => {
-            link.addEventListener('click', function(e) {
-                const url = this.getAttribute('href');
-                const webUrl = url.replace('nmap://search?query=', 'https://map.naver.com/v5/search/');
-                setTimeout(() => {
-                    window.location.href = webUrl;
-                }, 500);
-            });
-        });
-    </script>
 </body>
 </html>
