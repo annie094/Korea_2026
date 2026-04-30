@@ -6,7 +6,41 @@
     <meta charset="UTF-8">
     <title>韓國行程 App</title>
     <style>
+.weather-row {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px 0;
+    padding: 15px;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.weather-item {
+    text-align: center;
+}
+
+.weather-time {
+    font-size: 10px;
+    color: #999;
+    margin-bottom: 5px;
+}
+
+.weather-icon {
+    width: 24px;
+    height: 24px;
+    stroke-width: 1px; /* 關鍵：設定細線條 */
+    color: #666;
+}
+
+.temp {
+    font-size: 14px;
+    margin-top: 5px;
+}
         /* 基礎樣式：模擬 Ciao Kitchen 的優雅簡約感 */
+<script>
+  lucide.createIcons();
+</script>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             background-color: #fcfaf8; /* 米白色底 */
